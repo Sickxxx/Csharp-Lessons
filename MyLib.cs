@@ -22,11 +22,10 @@ namespace MyLib
         }
         public static void FillArray(double[] numbers)
         {
-            maxValue++;
             Random random = new Random();
             for (int i = 0; i < numbers.Length; i++)
             {
-                numbers[i] = Math.Round(random.NextDouble * 200 - 100, 2);
+                numbers[i] = Math.Round(random.NextDouble() * 200 - 100, 2);
             }
         }
         public static void PrintArray(double[] numbers)
