@@ -88,11 +88,11 @@ namespace MyLib
             Console.Write("Среднее арифметическое каждого столбца: ");
             int rows = arr.GetLength(0);
             int columns = arr.GetLength(1);
-            for (int j = 0; j < rows; j++)
+            for (int j = 0; j < columns; j++)
             {
                 double count = 0;
                 double sum = 0;
-                for (int i = 0; i < columns; i++)
+                for (int i = 0; i < rows; i++)
                 {
                     sum = sum + arr[i, j];
                     count += 1;
