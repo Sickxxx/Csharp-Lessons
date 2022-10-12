@@ -117,6 +117,55 @@ namespace MyLib
                 Console.Write(average + ";  ");
             }
         }
+        public static void RowsSort(int[,] arr)
+        {
+            int rows = arr.GetLength(0);
+            int columns = arr.GetLength(1);
+            int temp = 0;
+            for (int k = 0; k < rows; k++)
+            {
+                for (int i = 0; i < columns; i++)
+                {
+                    for (int j = i + 1; j < columns; j++)
+                    {
+                        if (arr[k, i] < arr[k, j])
+                        {
+                            temp = arr[k, i];
+                            arr[k, i] = arr[k, j];
+                            arr[k, j] = temp;
+                        }
+                    }
+                }
+            }
+        }
+        public static void MatrixMultiplication(int[,] numbers_a, int[,] numbers_b)
+        {
+            int rows_c = numbers_a.GetLength(0);
+            int columns_c = numbers_b.GetLength(1);
+            int length_a = numbers_a.GetLength(1);
+            int length_b = numbers_b.GetLength(0);
+            int[,] numbers_c = new int[rows_c, columns_c];
+            int count = 0;
+            if (length_a == length_b)
+            {
+                for (int i = 0; i < rows_c; i++)
+                {
+                    for (int j = 0; j < columns_c; j++)
+                    {
+                        count = 0;
+                        while (count < length_a)
+                        {
+                            numbers_c[i, j] += numbers_a[i, count] * numbers_b[count, j];
+                            count += 1;
+                        }
+                    }
+                }
+                Console.WriteLine("");
+                MyLib.ArrayMD.PrintArray(numbers_c);
+            }
+            else Console.WriteLine($"Умножение матриц невозможно, столбцы {length_a} и строки {length_b} у матрицы не равны");
+        }
 
     }
+
 }
