@@ -111,6 +111,39 @@ void Zadacha58()
     }
     MyLib.ArrayMD.PrintArray(numbers);
 }
+void Zadacha59()
+{
+    // Задача 58: Заполните спирально массив 4 на 4 числами
+    // от 1 до 16.
+    int rows = 4;
+    int columns = 4;
+    int[,] numbers = new int[rows, columns];
+    int index = 0;
+    int current_row = 0;
+    int current_column = 0;
+    int change_index_row = 0;
+    int change_index_column = 1;
+    int steps = columns;
+    int turn = 0;
+    while (index < numbers.Length)
+    {
+        numbers[current_row, current_column] = index + 1;
+        index += 1;
+        steps -= 1;
+        if (steps == 0)
+        {
+            steps = rows * ((turn + 1) % 2) + columns * (turn % 2) - 1 - turn / 2;
+            int temp = change_index_row;
+            change_index_row = change_index_column;
+            change_index_column = -temp;
+            turn++;
+        }
+        current_row += change_index_row;
+        current_column += change_index_column;
+
+    }
+    MyLib.ArrayMD.PrintArray(numbers);
+}
 void Zadacha61()
 {
     // Задача 61: Задайте две матрицы. Напишите
@@ -140,18 +173,15 @@ void MatrixMultiplication(int[,] numbers_a, int[,] numbers_b)
     int length_a = numbers_a.GetLength(1);
     int length_b = numbers_b.GetLength(0);
     int[,] numbers_c = new int[rows_c, columns_c];
-    int count = 0;
     if (length_a == length_b)
     {
         for (int i = 0; i < rows_c; i++)
         {
             for (int j = 0; j < columns_c; j++)
             {
-                count = 0;
-                while (count < length_a)
+                for (int k = 0; k < length_a; k++)
                 {
-                    numbers_c[i, j] += numbers_a[i, count] * numbers_b[count, j];
-                    count += 1;
+                    numbers_c[i, j] += numbers_a[i, k] * numbers_b[k, j];
                 }
             }
         }
@@ -160,7 +190,4 @@ void MatrixMultiplication(int[,] numbers_a, int[,] numbers_b)
     }
     else Console.WriteLine($"Умножение матриц невозможно, столбцы {length_a} и строки {length_b} у матрицы не равны");
 }
-Zadacha54();
-Zadacha56();
-Zadacha58();
 Zadacha61();
