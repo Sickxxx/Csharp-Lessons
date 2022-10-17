@@ -65,15 +65,15 @@ void Task38()
     FillArrayDouble(numbers);
     PrintArrayDouble(numbers);
     FindMaxAndMinValue(numbers);
-   
+
 }
 void FindMaxAndMinValue(double[] numbers)
 {
     double max = numbers[0];
     double min = numbers[0];
-    for (int i =1; i < numbers.Length; i++)
+    for (int i = 1; i < numbers.Length; i++)
     {
-        if (numbers[i]>max)
+        if (numbers[i] > max)
         {
             max = numbers[i];
         }
@@ -83,24 +83,24 @@ void FindMaxAndMinValue(double[] numbers)
         }
     }
     double diff = max - min;
-    Console.WriteLine("Разность между максимальным и минимальным элементом"+"{0,6:F2}",diff);
+    Console.WriteLine("Разность между максимальным и минимальным элементом " + diff);
 }
 void FillArrayDouble(double[] numbers)
 {
     Random random = new Random();
     for (int i = 0; i < numbers.Length; i++)
     {
-        numbers[i] = random.NextDouble()*100;
+        numbers[i] = Math.Round(random.NextDouble() * 20 - 10, 2);
     }
 }
 void PrintArrayDouble(double[] numbers)
 {
     for (int i = 0; i < numbers.Length; i++)
     {
-        Console.Write("{0,6:F2}", numbers[i]);
+        Console.Write(numbers[i] + " ");
     }
     Console.WriteLine("");
 }
-Task34();
-Task36();
+//Task34();
+//Task36();
 Task38();
