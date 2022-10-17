@@ -31,8 +31,15 @@ void Zadacha2()
 {
     // Задача 2. Напишите метод, который заполняет массив случайным количеством (от 1 до 100) нулей и единиц. 
     //Размер массива должен совпадать с квадратом количества единиц в нём.
-
-    int[] numbers = new int[100];
+    Console.WriteLine("Введите количество единиц от 1 до 10: ");
+    int numb = Convert.ToInt32(Console.ReadLine());
+    int[] numbers = new int[numb * numb];
+    //MyLib.Array.FillArray(numbers, 0, 1);
+    for (int i = 0; i < numbers.Length; i+=numb)
+    {
+        numbers[i]= 1;
+    }
+    MyLib.Array.PrintArray(numbers);
 }
 void Zadacha3()
 {
@@ -52,7 +59,7 @@ void Zadacha3()
             flag = true;
             maxind = numbers[i];
         }
-        
+
     }
     Console.WriteLine($"Самый часто встречающийся элемент {maxind}");
 
@@ -85,6 +92,7 @@ void FindValue(int[] numbers, int value)
     {
         Console.WriteLine($"Число {value} Не находится в массиве");
     }
+}
 
 
     // Создание игры: 
@@ -96,4 +104,4 @@ void FindValue(int[] numbers, int value)
     // https://docs.microsoft.com/ru-ru/dotnet/api/system.consolekey?view=net-6.0
 
     // Задача 2*. Создать игру лабиринт.
-    Zadacha3();
+    Zadacha2();
